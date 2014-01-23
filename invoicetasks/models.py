@@ -31,6 +31,7 @@ class TaskToInvoice(models.Model):
     description = models.TextField(blank=True, null=True)
     hours = models.IntegerField(blank=True, null=True, default=0)
     status = models.CharField(max_length=12, blank=True, null=True, choices=TASK_STAT)
+    rate = models.IntegerField(default=0, blank=True, null=True)
 
 
 class Invoice(models.Model):

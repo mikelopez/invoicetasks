@@ -1,0 +1,27 @@
+{% extends "invoicetasks/mainweb-base.html" %}
+
+{% block additional_css_overrides %}
+<style type="text/css">
+    textarea{ height:42px; width:300px;}
+</style>
+{% endblock %}
+
+{% block title %}Add a Task To Invoice{% endblock %}
+{% block heading %}Add a Task To Invoice{% endblock %}
+{% block task-tab %}active{% endblock %}
+
+
+{% block form_submit_to %}{% url 'tasktoinvoice_add' %}{% endblock %}
+{% block add_website_form %}
+<div class="well" style="width:484px;">
+    <table width="650">
+      {{form.as_table}}
+    </table>
+    <input type="submit" class="btn btn-success" value="Add Task To Invoice" />
+</div>
+{% endblock %}
+
+{% block action_button %}
+    <input type="button" class="btn btn-danger pull-right" value="View Task To Invoices" 
+                onclick="window.location='{% url 'tasktoinvoice_view' %}';"/>
+{% endblock %}

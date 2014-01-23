@@ -1,0 +1,17 @@
+{% extends "invoicetasks/mainweb-base.html" %}
+
+{% block title %}Task{% endblock %}
+{% block heading %}Task{% endblock %}
+{% block task-tab %}active{% endblock %}
+
+{% block table_list %}
+
+  
+
+ {% endblock %}
+
+
+ {% block action_button %}
+    <input type="button" class="btn btn-success pull-right" value="Add Task" 
+                onclick="window.location='{% url 'tasktoinvoice_add' %}';"/>
+{% endblock %}

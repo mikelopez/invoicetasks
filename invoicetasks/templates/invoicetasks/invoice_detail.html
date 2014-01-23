@@ -1,0 +1,104 @@
+{% extends "invoicetasks/mainweb-base.html" %}
+
+{% block title %}Invoice {{object.domain}}{% endblock %}
+{% block heading %}
+	{% if object.active %} 
+		<i class="fa fa-power-off fa-1x" style="color:green;"></i>
+	{% else %}
+		<i class="fa fa-power-off fa-1x" style="color:red;"></i>
+	{% endif %}
+Website: {{object.domain}}{% endblock %}
+{% block invoice-tab %}active{% endblock %}
+
+{% block detail_view %}
+
+	
+	<div style="width:300px;float:left;font-size:13px;">
+    	<b>Website:</b> {{object.domain}}<br /> 
+    	<table class="table-bordered table-striped table">
+    		<tr>
+    			<td>Active</td>
+    			<td>Whitelabel</td>
+    			<td>Watermarked</td>
+    			<td>Redirect</td>
+    		</tr>
+    		<tr>
+    			<td>
+    			  {% if object.active %}
+			        <i class="fa fa-power-off fa-1x" style="color:green;"></i>
+			        <!--span class="label label-success">Active</span-->
+			      {% else %}
+			      <i class="fa fa-power-off fa-1x" style="color:red;"></i>
+			        <!--span class="label label-danger">Inactive</span-->
+			      {% endif %} 
+			    </td>
+    			<td>
+    				 {% if object.whitelabel %}
+			            <i class="fa fa-check fa-1x" style="color:green;"></i>
+			            <!--span class="label label-success">Active</span-->
+			          {% else %}
+			          <i class="fa fa-check fa-1x" style="color:red;"></i>
+			            <!--span class="label label-danger">Inactive</span-->
+			          {% endif %}
+    			</td>
+    			<td>
+    			{% if object.watermarked %}
+			            <i class="fa fa-check fa-1x" style="color:green;"></i>
+			            <!--span class="label label-success">Active</span-->
+			          {% else %}
+			          <i class="fa fa-check fa-1x" style="color:red;"></i>
+			            <!--span class="label label-danger">Inactive</span-->
+			          {% endif %}
+    			</td>
+    			<td>
+    			{% if object.redirect_to %}
+			            <i class="fa fa-check fa-1x" style="color:green;"></i>
+			            <!--span class="label label-success">Active</span-->
+			          {% else %}
+			          <i class="fa fa-check fa-1x" style="color:red;"></i>
+			            <!--span class="label label-danger">Inactive</span-->
+			          {% endif %}
+    			</td>
+    		</tr>
+    	</table>
+
+    </div>
+    {% if object.has_pages %}
+	<div style="width:500px;float:right;margin-left:15px;">
+		<h4>Website Pages</h4>
+		<table class="table-bordered table-striped table">
+            <tr><td>Page</td><td>Title</td><td>Get Data</td><td>Template</td></tr>
+			{% for i in object.websitepage_set.select_related %}
+				<tr style="font-size:12px;">
+					<td>{{i.page}}</td>
+					<td>{{i.title}}</td>
+					<td>{{i.get_data}}</td>
+					<td>{{i.template_filename}}</td>
+				</tr>			
+			{% endfor %}
+		</table>
+	</div>
+	{% else %}
+		<div class="alert alert-danger" style="float:right;width:300px;">
+			<h4>WARNING</h4>This website has 0 sitepages. It is recommended to add atleast one index page. If it needs to redirect, add the URL into the redirect_to spot for the new website-page.
+		</div>
+	{% endif %}
+
+	<div class="linebreak10"></div>
+	{% if object.redirect_to %}
+    	<hr />
+    	<b>Redirects to:</b> 
+    	<br />{{object.redirect_to}}<br />
+    	<a href="{{object.redirect_to}}" target="_blank">View Link</a>
+    	{% endif %}
+    	<hr />
+    	<b>Meta Keywords:</b> {{object.meta_key}}<br />
+    	<b>Meta Description:</b> {{object.meta_desc}}<hr />
+
+{% endblock %}
+
+{% block action_button %}
+    <input type="button" class="btn btn-info pull-right" value="Back to invoices" 
+                onclick="window.location='{% url 'invoice_view' %}';"/>
+{% endblock %}
+
