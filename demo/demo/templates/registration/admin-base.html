@@ -37,18 +37,19 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="/staff/website/">DJ Rawdogger</a>
+                <a class="brand" href="/staff/website/">InvoiceTasks</a>
                 <div class="nav-collapse">
                   <ul class="nav">
                       <li class="active"><a href="/staff/website/">Home</a></li>
-                    <li><a href="{% url 'website_view' %}">Main Web</a></li>
                     
                     <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quick Add Stuff <b class="caret"></b></a>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
                       <ul class="dropdown-menu">
                          {% block add_stuff_dropdown %}
-                         <li><a href="{% url 'website_add' %}">Add Website</a></li>
-                            <li><a href="{% url 'websitepage_add' %}">Add Website Pages</a></li>
+                            <li><a href="{% url 'tasktoinvoice_add' %}">Add Task</a></li>
+                            <li><a href="{% url 'invoice_add' %}">Add Invoice</a></li>
+                            <li><a href="{% url 'client_add' %}">Add Client</a></li>
+
                          {% endblock %}
                         <!--li class="divider"></li>
                         <li><a href="#">Separated link</a></li-->
@@ -60,17 +61,17 @@
                   </form-->
                   <ul class="nav pull-right">
                     
-                    <li class="divider-vertical"></li>
+                    <!--li class="divider-vertical"></li>
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Modules <b class="caret"></b></a>
                       <ul class="dropdown-menu">
-                        <li><a href="{% url 'website_view' %}">MainWeb</a></li>
+                        <li><a href="/invoices">MainWeb</a></li>
 
                         <!--li><a href="#">Something else here</a></li-->
                         <li class="divider"></li>
                         <li><a href="/logout/">Logout</a></li>
                       </ul>
-                    </li>
+                    </li-->
                   </ul>
                 </div><!-- /.nav-collapse -->
               </div>
